@@ -1,9 +1,11 @@
-import {MouseEventHandler, useState} from 'react';
+import  {MouseEventHandler, useState } from 'react';
 import { LazyImage } from "@/components/RandomFox";
+
+import { random } from "lodash";
 
 
 // generate a random function between 1 - 123
-const random = () => Math.floor(Math.random() * 123) + 1;
+const myRandom = () => random(1, 123);
 
 
 
@@ -24,7 +26,7 @@ export default function Home() {
 
       const newImageItem = {
         id:generateId(), 
-        url:`https://randomfox.ca/images/${random()}.jpg`,
+        url:`https://randomfox.ca/images/${myRandom()}.jpg`,
       };
 
       setImages([

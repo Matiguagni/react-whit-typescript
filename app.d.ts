@@ -1,1 +1,1 @@
-type ImageItem = {id:string, url:string}
+type IImageItem = {id:string, url:string} //siempre I al inicio por convencion 
