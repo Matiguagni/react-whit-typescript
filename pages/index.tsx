@@ -1,11 +1,11 @@
 import {MouseEventHandler, useState} from 'react';
-import { RandomFox } from "@/components/RandomFox";
+import { LazyImage } from "@/components/RandomFox";
 
 
 // generate a random function between 1 - 123
 const random = () => Math.floor(Math.random() * 123) + 1;
 
-type ImageItem = {id:string, url:string}
+
 
 const generateId = () => Math.random().toString(36).substring(2,9)
 
@@ -13,7 +13,7 @@ const generateId = () => Math.random().toString(36).substring(2,9)
 
 export default function Home() {
 
-    const [images, setImages] = useState<Array<ImageItem>>([])
+    const [images, setImages] = useState<Array<IImageItem>>([])
 
     const addNewFox: MouseEventHandler<HTMLButtonElement> = (event) => {
         
@@ -41,14 +41,20 @@ export default function Home() {
         Hola mundo
       </h1> 
 
-      <button onClick={addNewFox}>
+      <button onClick={addNewFox} className=' '>
         Add new fox
       </button>
       
       {images.map(({id, url}) => (
         
         <div key= {id} className="p-4">
-          <RandomFox image={url} />
+          <LazyImage    /* gracias al spread operator podemos acceder en nuestro componente a todas las propiedades de un elemento image */
+           width={320} 
+           height="auto"
+           src={url}
+           className="rounded bg-gray-300" 
+           onClick = {() => console.log("Hey")}
+          />
         </div>
 
       ))}
